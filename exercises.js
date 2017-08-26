@@ -63,9 +63,9 @@ function fizzBuzz(num) {
   if (num % 3 === 0 & (num % 5 !== 0 )) {
     return 'fizz';
   } else if ((num % 3 !== 0) & (num % 5 === 0)) {
-    return "buzz";
+    return 'buzz';
   } else if (num % 3 === 0 && num % 5 === 0) {
-    return "fizzbuzz";
+    return 'fizzbuzz';
   } else {
     return num;
   }
@@ -82,7 +82,7 @@ function isPrime(num) {
   } else if (num === 1) {
     return false;
   } else {
-    for (var i = 1; i < num; i++ ) {
+    for (var i = 2; i < num; i++ ) {
       if (num % i === 0) {
         return false;
       }
@@ -98,7 +98,7 @@ function returnFirst(arr) {
 
 function returnLast(arr) {
   // return the last item of the array
-  return arr[-1];
+  return arr[arr.length-1];
 }
 
 function getArrayLength(arr) {
@@ -117,14 +117,26 @@ function incrementByOne(arr) {
 function addItemToArray(arr, item) {
   // add the item to the end of the array
   // return the array
-  return arr.push(item);
+  //var result = arr.push(item);
+  var result = [];
+  result[arr.length] = item;
+  for (var i = 0; i < arr.length; i++) {
+    result[i] = arr[i];
+  }
+  return result;
 }
 
 function addItemToFront(arr, item) {
   // add the item to the front of the array
   // return the array
   // hint: use the array method .unshift
-  return arr.unshift(item);
+  // var result = arr.unshift(item);
+  var result = [];
+  result[0] = item;
+  for (var i = 1; i <= arr.length; i++) {
+    result[i] = arr[i-1];
+  }
+  return result;
 }
 
 function wordsToSentence(words) {
@@ -132,13 +144,13 @@ function wordsToSentence(words) {
   // return a string that is all of the words concatenated together
   // spaces need to be between each word
   // example: ['Hello', 'world!'] -> 'Hello world!'
-  var output = "";
+  var output = '';
   for (var i = 0; i < words.length; i++){
     output += words[i];
-    if ( i === words.length-1) {
-
+    if( i === words.length-1) {
+      output += '';
     } else {
-      output += " ";
+      output += ' ';
     }
   }
   return output;
@@ -186,14 +198,14 @@ function largestNumber(numbers) {
       } else {
         if (numbers[i] > largest) {
           largest = numbers[i];
-          console.log("The largest number has been changed.");
+          //console.log("The largest number has been changed.");
         }
       }
-      console.log("Current largest number: " + largest);
+      //console.log("Current largest number: " + largest);
     }
     return largest;
   } else {
-    console.log("Error: Array size is not larger than 0.");
+    //console.log("Error: Array size is not larger than 0.");
   }
 }
 
